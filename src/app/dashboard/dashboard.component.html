@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon class="icon-display">menu</mat-icon>
+      Menu
+    </button>
+    <span class="toolbar-spacer"></span>
+    <mat-icon class="icon-display" aria-hidden="false" aria-label="Example user verified icon" >account_box</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidebar-container" style="position: fixed">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+        <a class="nav-item" routerLinkActive="menu-item-active" mat-list-item (click)="logout()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <section>Main</section>
+  <mat-sidenav-content (click)="drawer.close();" (focus)="drawer.close()">
+    <div id="top"></div>
+    <router-outlet (activate)="goToTop();"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
